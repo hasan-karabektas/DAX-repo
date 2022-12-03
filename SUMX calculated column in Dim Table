@@ -1,0 +1,9 @@
+Current Cost =
+//Calculated column in Dimension table
+IF(
+	[Collaboration Agreement]="yes";
+	SUMX(
+    RELATEDTABLE(Data2022);Data2022[Cost]);
+	IF([Collaboration Agreement]="no";
+		SUMX(RELATEDTABLE(Data2022);Data2022[Cost])+SUMX(RELATEDTABLE(Data2021);Data2021[Cost]);
+		BLANK())) 
